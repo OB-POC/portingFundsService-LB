@@ -11,13 +11,12 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "mergeAccount": {
+    "mergeAccounts": {
       "accepts": [
-        {"arg":"x-access-token","type":"string","required":true, "http": {"source":"req"}},
-        {"arg":"request","type":"object","required":true,"http": {"source":"body"}}
+        {"arg":"req","type":"object","required":true,"http": {"source":"req"}}
       ],
       "returns": { "arg": "data", "type": "object", "root": true},
-      "http": {"verb": "post", "path": "/mergeAccount","status":200},
+      "http": {"verb": "post", "path": "/mergeAccounts","status":200},
       "accessScopes": ["read", "read:profile"]
     }
   }

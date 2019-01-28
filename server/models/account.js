@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 var config = require('../configuration');
 
 module.exports = function(Account) {
-    Account.mergeAccount = (req,cb) => {
+    Account.mergeAccounts = (req,cb) => {
         var token = req.headers['x-access-token'];
         var postData = req.body;
 
@@ -17,14 +17,15 @@ module.exports = function(Account) {
             }
 
             var userName = decodedObj.username;
-            Account.app.datasources.dbService.getDebitAccounts(username,(err,response,ctx) =>{
+            
+            Account.app.datasources.dbService.getDebitAccounts(userName,(err,response,ctx) =>{
                 if(err){
                     let err = Error();
                     err.statusCode = 500;
                     err.message = 'Failed to load data.';
                     cb(err,null);
                 }
-                var data = JSON.parse(response);
+                var data = response;
 
                 postData.senders.map((obj) => {
                     var filteredSenderBank = data.banks.filter((bank) => {
@@ -63,7 +64,7 @@ module.exports = function(Account) {
                     data.banks = [...restBankDetails, filteredReceiverBank];
                 });
 
-                Account.app.datasources.dbService.modifyDebitBanks(username,{"banks":data.banks},(err,response,ctx) => {
+                Account.app.datasources.dbService.modifyDebitBanks(userName,{"banks":data.banks},(err,response,ctx) => {
                     if(err)
                     {
                         let err = Error();
