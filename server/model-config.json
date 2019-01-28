@@ -13,7 +13,7 @@
       "./mixins"
     ]
   },
-  "account": {
+  "portingService": {
     "dataSource": "dbService",
     "public": true
   }

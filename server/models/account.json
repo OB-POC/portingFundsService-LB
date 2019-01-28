@@ -1,6 +1,6 @@
 {
-  "name": "account",
-  "plural": "account",
+  "name": "portingService",
+  "plural": "portingService",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,5 +10,15 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "mergeAccount": {
+      "accepts": [
+        {"arg":"x-access-token","type":"string","required":true, "http": {"source":"req"}},
+        {"arg":"request","type":"object","required":true,"http": {"source":"body"}}
+      ],
+      "returns": { "arg": "data", "type": "object", "root": true},
+      "http": {"verb": "post", "path": "/mergeAccount","status":200},
+      "accessScopes": ["read", "read:profile"]
+    }
+  }
 }
