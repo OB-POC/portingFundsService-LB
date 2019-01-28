@@ -19,7 +19,8 @@
       {
         "functions": {
           "modifyDebitBanks": [
-            "username","banks"
+            "username",
+            "banks"
           ]
         },
         "template": {
