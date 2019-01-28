@@ -3,6 +3,33 @@
     "name": "dbService",
     "baseURL": "http://localhost:5000/dbService",
     "crud": true,
-    "connector": "rest"
+    "connector": "rest",
+    "operations": [
+      {
+        "functions": {
+          "getDebitAccounts": [
+            "username"
+          ]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:5000/dbService/{username:string}-debit"
+        }
+      },
+      {
+        "functions": {
+          "modifyDebitBanks": [
+            "username","banks"
+          ]
+        },
+        "template": {
+          "method": "PATCH",
+          "url": "http://localhost:5000/dbService/{username:string}-debit",
+          "form": {
+            "banks": "{banks:Object}"
+          }
+        }
+      }
+    ]
   }
 }
