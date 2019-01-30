@@ -26,8 +26,12 @@
         "template": {
           "method": "PATCH",
           "url": "http://localhost:5000/dbService/{username:string}-debit",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
           "form": {
-            "banks": "{banks:Object}"
+            "banks": "{banks:object}"
           }
         }
       }

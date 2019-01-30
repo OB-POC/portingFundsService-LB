@@ -64,7 +64,8 @@ module.exports = function(Account) {
                     data.banks = [...restBankDetails, filteredReceiverBank];
                 });
 
-                Account.app.datasources.dbService.modifyDebitBanks(userName,{"banks":data.banks},(err,response,ctx) => {
+                console.log(data.banks);
+                Account.app.datasources.dbService.modifyDebitBanks(userName,data.banks,(err,response,ctx) => {
                     if(err)
                     {
                         let err = Error();
